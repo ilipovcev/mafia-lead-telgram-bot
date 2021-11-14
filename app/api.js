@@ -1,12 +1,12 @@
-import axios, { AxiosRequestConfig, Method } from 'axios';
+const axios = require('axios');
 
-class MafiaApi {
+module.exports = class MafiaApi {
   static ROOT_URL = 'https://api.mafia.arkan1.ru/v1/';
   static DEFAULT_TIMEOUT = 10 * 1000;
   static API_TOKEN = null;
   static USER = {};
 
-  static request(method, path, data, options = {}) {
+  static request(method, path, data = {}, options = {}) {
     return new Promise((resolve, reject) => {
       axios
         .request({
@@ -195,4 +195,4 @@ class MafiaApi {
       return MafiaApi.paginated('games', paginateOptions, data, options);
     }
   };
-}
+};
