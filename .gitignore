@@ -5,6 +5,7 @@ package-lock.json
 *.gz
 
 .env
+users.sqlite3
 
 # Optional npm cache directory
 .npm

@@ -21,4 +21,13 @@ const playersKeyboard = {
   },
 };
 
-module.exports = { mainKeyboard, playersKeyboard };
+const gamesKeyboard = {
+  reply_markup: {
+    keyboard: [
+      [backButton, { text: 'Найти игру', callback_data: 'search_game' }],
+      [{ text: 'Создать игру', callback_data: 'create_game' }],
+    ],
+  },
+};
+
+module.exports = { mainKeyboard, playersKeyboard, gamesKeyboard };
