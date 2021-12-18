@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon index.js",
+    "dev": "nodemon index_telegraf.js",
     "start": "node index.js"
   },
   "author": "",
@@ -15,7 +15,9 @@
     "dotenv": "^10.0.0",
     "node-telegram-bot-api": "^0.54.0",
     "nodemon": "^2.0.15",
-    "sqlite3": "^5.0.2"
+    "sqlite3": "^5.0.2",
+    "telegraf": "^4.5.2",
+    "telegraf-session-local": "^2.1.0"
   },
   "devDependencies": {
     "eslint": "^8.2.0",

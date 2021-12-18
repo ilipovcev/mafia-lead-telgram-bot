@@ -16,7 +16,13 @@ MafiaApi.auth(process.env.API_TOKEN);
 
 const dao = new AppDAO('./users.sqlite3');
 const userRepository = new UserRepository(dao);
-userRepository.createTable();
+userRepository
+  .createTable()
+  .then(() => console.log('Created'))
+  .catch((err) => {
+    console.log('Error: ');
+    console.log(JSON.stringify(err));
+  });
 
 bot.setMyCommands([
   { command: '/start', description: 'Запуск приложения' },

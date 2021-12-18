@@ -1,25 +1,19 @@
+const { Markup } = require('telegraf');
+
 const backButton = {
   text: 'Назад',
   callback_data: 'back',
 };
 
-const mainKeyboard = {
-  reply_markup: {
-    keyboard: [
-      [{ text: 'Игроки', callback_data: 'players' }],
-      [{ text: 'Игры', callback_data: 'games' }],
-    ],
-  },
-};
+const mainKeyboard = Markup.keyboard(['Игроки', 'Игры']).resize();
 
-const playersKeyboard = {
-  reply_markup: {
-    keyboard: [
-      [backButton, { text: 'Найти игрока', callback_data: 'search_player' }],
-      [{ text: 'Добавить игрока', callback_data: 'create_player' }],
-    ],
-  },
-};
+const authButton = Markup.keyboard(['Авторизоваться']).oneTime().resize();
+
+const playersKeyboard = (isAdmin = false) =>
+  Markup.keyboard([
+    ['Назад', 'Найти игрока'],
+    isAdmin ? ['Добавить игрока'] : [],
+  ]).resize();
 
 const gamesKeyboard = {
   reply_markup: {
@@ -30,4 +24,4 @@ const gamesKeyboard = {
   },
 };
 
-module.exports = { mainKeyboard, playersKeyboard, gamesKeyboard };
+module.exports = { mainKeyboard, playersKeyboard, gamesKeyboard, authButton };
