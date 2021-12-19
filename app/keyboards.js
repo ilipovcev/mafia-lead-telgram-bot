@@ -24,4 +24,18 @@ const gamesKeyboard = {
   },
 };
 
-module.exports = { mainKeyboard, playersKeyboard, gamesKeyboard, authButton };
+const playerInlineKeyboard = (id) =>
+  Markup.inlineKeyboard([
+    Markup.button.callback(
+      'Получить информацию об игроке',
+      `get_player_info_${id}`
+    ),
+  ]);
+
+module.exports = {
+  mainKeyboard,
+  playersKeyboard,
+  gamesKeyboard,
+  authButton,
+  playerInlineKeyboard,
+};
