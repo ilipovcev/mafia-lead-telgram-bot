@@ -151,6 +151,13 @@ module.exports = class MafiaApi {
   };
 
   static Players = class Players {
+    static ROLE_TITLES = {
+      red: 'Мирный',
+      sheriff: 'Шериф',
+      black: 'Мафия',
+      don: 'Дон',
+    };
+
     static list(paginateOptions = {}, data = {}, options = {}) {
       return MafiaApi.paginated('players', paginateOptions, data, options);
     }
@@ -191,8 +198,27 @@ module.exports = class MafiaApi {
   };
 
   static Games = class Games {
+    static STATUS_TITLES = {
+      null: 'Не завершена',
+      red_win: 'Победа мирных',
+      black_win: 'Победа мафии',
+    };
+
     static list(paginateOptions = {}, data = {}, options = {}) {
       return MafiaApi.paginated('games', paginateOptions, data, options);
+    }
+
+    static get(game_id, options = {}) {
+      return MafiaApi.get('games/' + game_id, {}, options);
+    }
+
+    static getPlayers(game_id, paginateOptions = {}, data = {}, options = {}) {
+      return MafiaApi.paginated(
+        `games/${game_id}/players`,
+        paginateOptions,
+        data,
+        options
+      );
     }
   };
 };

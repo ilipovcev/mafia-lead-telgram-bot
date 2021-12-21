@@ -26,10 +26,8 @@ const gamesKeyboard = {
 
 const playerInlineKeyboard = (id) =>
   Markup.inlineKeyboard([
-    Markup.button.callback(
-      'Получить информацию об игроке',
-      `get_player_info_${id}`
-    ),
+    Markup.button.callback('Подробнее', `get_player_info_${id}`),
+    Markup.button.callback('Список игр игрока', `get_player_games_${id}`),
   ]);
 
 module.exports = {
